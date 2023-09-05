@@ -212,6 +212,7 @@
             this.analyzersettings1.Name = "analyzersettings1";
             this.analyzersettings1.Size = new System.Drawing.Size(974, 640);
             this.analyzersettings1.TabIndex = 22;
+            this.analyzersettings1.Load += new System.EventHandler(this.analyzersettings1_Load);
             // 
             // UserControl3
             // 

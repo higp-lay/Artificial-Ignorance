@@ -40,7 +40,7 @@ namespace WindowsFormsApp2
 {
     public partial class UserControl2 : System.Windows.Forms.UserControl
     {
-        Size initScreen = new Size(1936, 1048);
+        System.Drawing.Size initScreen = new System.Drawing.Size(1936, 1048);
         public UserControl2()
         {
             InitializeComponent();
@@ -103,16 +103,16 @@ namespace WindowsFormsApp2
             var formPopup = new Form();
             formPopup.Icon = myParent.Icon;
             formPopup.Text = $"Report {dtnp}";
-            formPopup.MaximumSize = new Size(600, 600);
-            formPopup.MinimumSize = new Size(600, 600);
+            formPopup.MaximumSize = new System.Drawing.Size(600, 600);
+            formPopup.MinimumSize = new System.Drawing.Size(600, 600);
 
-            var newcolor = Color.FromArgb(Math.Min(255, Int32.Parse(color.R.ToString()) + 62), Math.Min(Int32.Parse(color.G.ToString()) + 48, 255), Math.Min(Int32.Parse(color.B.ToString()) + 33, 255));
+            var newcolor = System.Drawing.Color.FromArgb(Math.Min(255, Int32.Parse(color.R.ToString()) + 62), Math.Min(Int32.Parse(color.G.ToString()) + 48, 255), Math.Min(Int32.Parse(color.B.ToString()) + 33, 255));
             formPopup.BackColor = newcolor;
 
             var panelPopup = new System.Windows.Forms.Panel();
             formPopup.Controls.Add(panelPopup);
-            panelPopup.Size = new Size(600, 510);
-            panelPopup.Location = new Point(0, 0);
+            panelPopup.Size = new System.Drawing.Size(600, 510);
+            panelPopup.Location = new System.Drawing.Point(0, 0);
             panelPopup.AutoScroll = false;
             panelPopup.HorizontalScroll.Enabled = false;
             panelPopup.HorizontalScroll.Visible = false;
@@ -124,8 +124,8 @@ namespace WindowsFormsApp2
             formPopup.Controls.Add(closebutton);
             closebutton.Text = "Close";
             closebutton.Font = new Font(Properties.Appearance.Default.FontFamily, 12, FontStyle.Regular);
-            closebutton.Size = new Size(70, 30);
-            closebutton.Location = new Point(formPopup.Size.Width - closebutton.Width - 20, panelPopup.Size.Height + 10);
+            closebutton.Size = new System.Drawing.Size(70, 30);
+            closebutton.Location = new System.Drawing.Point(formPopup.Size.Width - closebutton.Width - 20, panelPopup.Size.Height + 10);
             closebutton.FlatStyle = FlatStyle.Flat;
             closebutton.Click += (s, a) =>
             {
@@ -136,8 +136,8 @@ namespace WindowsFormsApp2
             formPopup.Controls.Add(genpdfbutton);
             genpdfbutton.Text = "Download PDF Report";
             genpdfbutton.Font = new Font(Properties.Appearance.Default.FontFamily, 12, FontStyle.Regular);
-            genpdfbutton.Size = new Size(200, 30);
-            genpdfbutton.Location = new Point(closebutton.Location.X - genpdfbutton.Width - 20, panelPopup.Size.Height + 10);
+            genpdfbutton.Size = new System.Drawing.Size(200, 30);
+            genpdfbutton.Location = new System.Drawing.Point(closebutton.Location.X - genpdfbutton.Width - 20, panelPopup.Size.Height + 10);
             genpdfbutton.FlatStyle = FlatStyle.Flat;
             genpdfbutton.Click += (s, a) =>
             {
@@ -149,8 +149,8 @@ namespace WindowsFormsApp2
             panelPopup.Controls.Add(generalMetrics);
             generalMetrics.Text = "General Metrics";
             generalMetrics.Font = new Font(Properties.Appearance.Default.FontFamily, 20, FontStyle.Underline);
-            generalMetrics.Location = new Point(10, 10);
-            generalMetrics.Size = new Size(240, 30);
+            generalMetrics.Location = new System.Drawing.Point(10, 10);
+            generalMetrics.Size = new System.Drawing.Size(240, 30);
             generalMetrics.ReadOnly = true;
             generalMetrics.BackColor = color;
             generalMetrics.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -159,11 +159,11 @@ namespace WindowsFormsApp2
             panelPopup.Controls.Add(characterl);
             characterl.Text = "Characters";
             characterl.Font = new Font(Properties.Appearance.Default.FontFamily, 14, FontStyle.Regular);
-            characterl.Size = new Size(100, 20);
+            characterl.Size = new System.Drawing.Size(100, 20);
             characterl.ReadOnly = true;
             characterl.BackColor = color;
             characterl.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            characterl.Location = new Point(generalMetrics.Location.X + 10, generalMetrics.Location.Y + generalMetrics.Size.Height + 10);
+            characterl.Location = new System.Drawing.Point(generalMetrics.Location.X + 10, generalMetrics.Location.Y + generalMetrics.Size.Height + 10);
 
             var characterr = new System.Windows.Forms.TextBox();
             panelPopup.Controls.Add(characterr);
@@ -174,17 +174,17 @@ namespace WindowsFormsApp2
             //characterr.Size = new Size(100, 20);
             characterr.BackColor = color;
             characterr.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            characterr.Location = new Point(formPopup.Size.Width / 2 - characterr.Size.Width - 10, characterl.Location.Y);
+            characterr.Location = new System.Drawing.Point(formPopup.Size.Width / 2 - characterr.Size.Width - 10, characterl.Location.Y);
 
             var wordl = new System.Windows.Forms.TextBox();
             panelPopup.Controls.Add(wordl);
             wordl.Text = "Words";
             wordl.Font = new Font(Properties.Appearance.Default.FontFamily, 14, FontStyle.Regular);
-            wordl.Size = new Size(100, 20);
+            wordl.Size = new System.Drawing.Size(100, 20);
             wordl.ReadOnly = true;
             wordl.BackColor = color;
             wordl.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            wordl.Location = new Point(generalMetrics.Location.X + 10, characterl.Location.Y + characterl.Size.Height + 10);
+            wordl.Location = new System.Drawing.Point(generalMetrics.Location.X + 10, characterl.Location.Y + characterl.Size.Height + 10);
 
             var wordr = new System.Windows.Forms.TextBox();
             panelPopup.Controls.Add(wordr);
@@ -195,17 +195,17 @@ namespace WindowsFormsApp2
             wordr.ReadOnly = true;
             wordr.BackColor = color;
             wordr.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            wordr.Location = new Point(formPopup.Size.Width / 2 - wordr.Size.Width - 10, wordl.Location.Y);
+            wordr.Location = new System.Drawing.Point(formPopup.Size.Width / 2 - wordr.Size.Width - 10, wordl.Location.Y);
 
             var sentencel = new System.Windows.Forms.TextBox();
             panelPopup.Controls.Add(sentencel);
             sentencel.Text = "Sentences";
             sentencel.Font = new Font(Properties.Appearance.Default.FontFamily, 14, FontStyle.Regular);
-            sentencel.Size = new Size(100, 20);
+            sentencel.Size = new System.Drawing.Size(100, 20);
             sentencel.ReadOnly = true;
             sentencel.BackColor = color;
             sentencel.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            sentencel.Location = new Point(generalMetrics.Location.X + 10, wordl.Location.Y + wordl.Size.Height + 10);
+            sentencel.Location = new System.Drawing.Point(generalMetrics.Location.X + 10, wordl.Location.Y + wordl.Size.Height + 10);
 
             var sentencer = new System.Windows.Forms.TextBox();
             panelPopup.Controls.Add(sentencer);
@@ -216,17 +216,17 @@ namespace WindowsFormsApp2
             sentencer.ReadOnly = true;
             sentencer.BackColor = color;
             sentencer.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            sentencer.Location = new Point(formPopup.Size.Width / 2 - sentencer.Size.Width - 10, sentencel.Location.Y);
+            sentencer.Location = new System.Drawing.Point(formPopup.Size.Width / 2 - sentencer.Size.Width - 10, sentencel.Location.Y);
 
             var readingl = new System.Windows.Forms.TextBox();
             panelPopup.Controls.Add(readingl);
             readingl.Text = "Reading time";
             readingl.Font = new Font(Properties.Appearance.Default.FontFamily, 14, FontStyle.Regular);
-            readingl.Size = new Size(120, 20);
+            readingl.Size = new System.Drawing.Size(120, 20);
             readingl.ReadOnly = true;
             readingl.BackColor = color;
             readingl.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            readingl.Location = new Point(formPopup.Size.Width / 2 + 10, characterl.Location.Y);
+            readingl.Location = new System.Drawing.Point(formPopup.Size.Width / 2 + 10, characterl.Location.Y);
 
             var readingr = new System.Windows.Forms.TextBox();
             panelPopup.Controls.Add(readingr);
@@ -237,13 +237,13 @@ namespace WindowsFormsApp2
             readingr.ReadOnly = true;
             readingr.BackColor = color;
             readingr.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            readingr.Location = new Point(formPopup.Size.Width - readingr.Size.Width - 10, readingl.Location.Y);
+            readingr.Location = new System.Drawing.Point(formPopup.Size.Width - readingr.Size.Width - 10, readingl.Location.Y);
 
             var readinginfo = new PictureBox();
             panelPopup.Controls.Add(readinginfo);
             readinginfo.Image = System.Drawing.Image.FromFile(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "circle-info-solid.png"));
-            readinginfo.Size = new Size(readingl.Height - 10, readingl.Height - 10);
-            readinginfo.Location = new Point(readingr.Location.X - readinginfo.Size.Width - 20, (readingr.Location.Y + (readingr.Size.Height - readinginfo.Size.Height) / 2));
+            readinginfo.Size = new System.Drawing.Size(readingl.Height - 10, readingl.Height - 10);
+            readinginfo.Location = new System.Drawing.Point(readingr.Location.X - readinginfo.Size.Width - 20, (readingr.Location.Y + (readingr.Size.Height - readinginfo.Size.Height) / 2));
             readinginfo.SizeMode = PictureBoxSizeMode.StretchImage;
             readinginfo.BringToFront();
             readinginfo.MouseHover += (s, a) =>
@@ -257,11 +257,11 @@ namespace WindowsFormsApp2
             panelPopup.Controls.Add(speakingl);
             speakingl.Text = "Speaking time";
             speakingl.Font = new Font(Properties.Appearance.Default.FontFamily, 14, FontStyle.Regular);
-            speakingl.Size = new Size(120, 20);
+            speakingl.Size = new System.Drawing.Size(120, 20);
             speakingl.ReadOnly = true;
             speakingl.BackColor = color;
             speakingl.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            speakingl.Location = new Point(formPopup.Size.Width / 2 + 10, wordl.Location.Y);
+            speakingl.Location = new System.Drawing.Point(formPopup.Size.Width / 2 + 10, wordl.Location.Y);
 
             var speakingr = new System.Windows.Forms.TextBox();
             panelPopup.Controls.Add(speakingr);
@@ -272,13 +272,13 @@ namespace WindowsFormsApp2
             speakingr.ReadOnly = true;
             speakingr.BackColor = color;
             speakingr.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            speakingr.Location = new Point(formPopup.Size.Width - speakingr.Size.Width - 10, speakingl.Location.Y);
+            speakingr.Location = new System.Drawing.Point(formPopup.Size.Width - speakingr.Size.Width - 10, speakingl.Location.Y);
 
             var speakinginfo = new PictureBox();
             panelPopup.Controls.Add(speakinginfo);
             speakinginfo.Image = System.Drawing.Image.FromFile(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "circle-info-solid.png"));
-            speakinginfo.Size = new Size(speakingl.Height - 10, speakingl.Height - 10);
-            speakinginfo.Location = new Point(speakingr.Location.X - speakinginfo.Size.Width - 20, (speakingr.Location.Y + (speakingr.Size.Height - speakinginfo.Size.Height)/2));
+            speakinginfo.Size = new System.Drawing.Size(speakingl.Height - 10, speakingl.Height - 10);
+            speakinginfo.Location = new System.Drawing.Point(speakingr.Location.X - speakinginfo.Size.Width - 20, (speakingr.Location.Y + (speakingr.Size.Height - speakinginfo.Size.Height)/2));
             speakinginfo.SizeMode = PictureBoxSizeMode.StretchImage;
             speakinginfo.BringToFront();
             speakinginfo.MouseHover += (s, a) =>
@@ -294,8 +294,8 @@ namespace WindowsFormsApp2
             panelPopup.Controls.Add(readability);
             readability.Text = "Readability";
             readability.Font = new Font(Properties.Appearance.Default.FontFamily, 20, FontStyle.Underline);
-            readability.Location = new Point(generalMetrics.Location.X, sentencel.Location.Y + sentencel.Size.Height + 20);
-            readability.Size = new Size(240, 30);
+            readability.Location = new System.Drawing.Point(generalMetrics.Location.X, sentencel.Location.Y + sentencel.Size.Height + 20);
+            readability.Size = new System.Drawing.Size(240, 30);
             readability.ReadOnly = true;
             readability.BackColor = color;
             readability.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -304,11 +304,11 @@ namespace WindowsFormsApp2
             panelPopup.Controls.Add(charactersperwordl);
             charactersperwordl.Text = "Word length";
             charactersperwordl.Font = new Font(Properties.Appearance.Default.FontFamily, 14, FontStyle.Regular);
-            charactersperwordl.Size = new Size(120, 20);
+            charactersperwordl.Size = new System.Drawing.Size(120, 20);
             charactersperwordl.ReadOnly = true;
             charactersperwordl.BackColor = color;
             charactersperwordl.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            charactersperwordl.Location = new Point(readability.Location.X + 10, readability.Location.Y + readability.Size.Height + 10);
+            charactersperwordl.Location = new System.Drawing.Point(readability.Location.X + 10, readability.Location.Y + readability.Size.Height + 10);
 
             var charactersperwordr = new System.Windows.Forms.TextBox();
             panelPopup.Controls.Add(charactersperwordr);
@@ -319,17 +319,17 @@ namespace WindowsFormsApp2
             charactersperwordr.ReadOnly = true;
             charactersperwordr.BackColor = color;
             charactersperwordr.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            charactersperwordr.Location = new Point(formPopup.Size.Width / 2 - charactersperwordr.Size.Width - 10, charactersperwordl.Location.Y);
+            charactersperwordr.Location = new System.Drawing.Point(formPopup.Size.Width / 2 - charactersperwordr.Size.Width - 10, charactersperwordl.Location.Y);
 
             var wordspersentencel = new System.Windows.Forms.TextBox();
             panelPopup.Controls.Add(wordspersentencel);
             wordspersentencel.Text = "Sentence length";
             wordspersentencel.Font = new Font(Properties.Appearance.Default.FontFamily, 14, FontStyle.Regular);
-            wordspersentencel.Size = new Size(140, 20);
+            wordspersentencel.Size = new System.Drawing.Size(140, 20);
             wordspersentencel.ReadOnly = true;
             wordspersentencel.BackColor = color;
             wordspersentencel.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            wordspersentencel.Location = new Point(formPopup.Size.Width / 2 + 10, charactersperwordl.Location.Y);
+            wordspersentencel.Location = new System.Drawing.Point(formPopup.Size.Width / 2 + 10, charactersperwordl.Location.Y);
 
             var wordspersentencer = new System.Windows.Forms.TextBox();
             panelPopup.Controls.Add(wordspersentencer);
@@ -340,18 +340,18 @@ namespace WindowsFormsApp2
             wordspersentencer.ReadOnly = true;
             wordspersentencer.BackColor = color;
             wordspersentencer.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            wordspersentencer.Location = new Point(formPopup.Size.Width - wordspersentencer.Size.Width - 10, wordspersentencel.Location.Y);
+            wordspersentencer.Location = new System.Drawing.Point(formPopup.Size.Width - wordspersentencer.Size.Width - 10, wordspersentencel.Location.Y);
 
 
             var readabilityscorel = new System.Windows.Forms.TextBox();
             panelPopup.Controls.Add(readabilityscorel);
             readabilityscorel.Text = "Readability score";
             readabilityscorel.Font = new Font(Properties.Appearance.Default.FontFamily, 14, FontStyle.Regular);
-            readabilityscorel.Size = new Size(200, 20);
+            readabilityscorel.Size = new System.Drawing.Size(200, 20);
             readabilityscorel.ReadOnly = true;
             readabilityscorel.BackColor = color;
             readabilityscorel.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            readabilityscorel.Location = new Point(readability.Location.X + 10, charactersperwordl.Location.Y + charactersperwordl.Size.Height + 10);
+            readabilityscorel.Location = new System.Drawing.Point(readability.Location.X + 10, charactersperwordl.Location.Y + charactersperwordl.Size.Height + 10);
 
             double rs = analyzer.readabilityScore();
             var readabilityscorer = new System.Windows.Forms.TextBox();
@@ -363,7 +363,7 @@ namespace WindowsFormsApp2
             readabilityscorer.ReadOnly = true;
             readabilityscorer.BackColor = color;
             readabilityscorer.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            readabilityscorer.Location = new Point(formPopup.Size.Width / 2 - readabilityscorer.Size.Width - 10, readabilityscorel.Location.Y);
+            readabilityscorer.Location = new System.Drawing.Point(formPopup.Size.Width / 2 - readabilityscorer.Size.Width - 10, readabilityscorel.Location.Y);
             readabilityscorer.BringToFront();
 
             var readabilitynotes = new System.Windows.Forms.TextBox();
@@ -371,7 +371,7 @@ namespace WindowsFormsApp2
             readabilitynotes.Multiline = true;
             readabilitynotes.WordWrap = true;
             readabilitynotes.Font = new Font(Properties.Appearance.Default.FontFamily, 12, FontStyle.Regular);
-            readabilitynotes.Size = new Size(580, 100);
+            readabilitynotes.Size = new System.Drawing.Size(580, 100);
 
             // Reference: https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests
 
@@ -414,7 +414,7 @@ namespace WindowsFormsApp2
             readabilitynotes.ReadOnly = true;
             readabilitynotes.BackColor = color;
             readabilitynotes.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            readabilitynotes.Location = new Point(readability.Location.X, readabilityscorel.Location.Y + readabilityscorel.Size.Height + 10);
+            readabilitynotes.Location = new System.Drawing.Point(readability.Location.X, readabilityscorel.Location.Y + readabilityscorel.Size.Height + 10);
 
             Cursor.Current = Cursors.Default;
             formPopup.Show(this);
@@ -534,7 +534,7 @@ namespace WindowsFormsApp2
                 x++;
             }
             //MessageBox.Show(source);
-            MessageBox.Show(path);
+            //MessageBox.Show(path);
 
             doc.SaveAs(path);
             MessageBox.Show("Report saved in " + Path.GetDirectoryName(path), "Finished", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1174,7 +1174,7 @@ namespace WindowsFormsApp2
 
             var scope = engine.CreateScope();
 
-            var source = engine.CreateScriptSourceFromFile(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\test.py"));
+            var source = engine.CreateScriptSourceFromFile(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\syallapy.py"));
             var compilation = source.Compile();
             var result = compilation.Execute(scope);
 

@@ -206,5 +206,9 @@ namespace WindowsFormsApp2
             TextRenderer.DrawText(e.Graphics, ">", new Font(Properties.Appearance.Default.FontFamily, 20, FontStyle.Regular), new System.Drawing.Point(button1.Size.Width - 100, button1.Height / 2 - 16), Color.Black, TextFormatFlags.NoPrefix);
         }
 
+        private void analyzersettings1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
