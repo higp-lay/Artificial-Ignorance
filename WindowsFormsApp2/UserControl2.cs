@@ -1095,6 +1095,7 @@ namespace WindowsFormsApp2
             bool flag = false;
             for (int i = 0; i < essay.Length; i++)
             {
+                Console.WriteLine($"{i} {cnt}");
                 int tmp = cnt;
                 cnt += Convert.ToInt32((essay[i] == '.' && !flag) || ((essay[i] == '!' || essay[i] == '?') && isAlphaNumeric(essay[i - 1])));
                 //if (tmp != cnt) MessageBox.Show(i.ToString() + essay[i-1] + essay[i] + essay[i+1]);
@@ -1117,12 +1118,6 @@ namespace WindowsFormsApp2
         {
             string pattern = @"[-\w]+[\s\t\r\n]?";
             MatchCollection matches = Regex.Matches(this.essay, pattern);
-            /*
-            foreach (Match match in matches)
-            {
-                Console.WriteLine(match);
-            }
-            */
             return matches; 
         }
 
