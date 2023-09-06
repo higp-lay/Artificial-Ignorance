@@ -19,6 +19,7 @@ namespace WindowsFormsApp2
     public partial class Form1 : Form
     {
         const string version = "0.3.0";
+        public int selen, sestart;
 
         public UserControl UC1
         {
@@ -32,6 +33,18 @@ namespace WindowsFormsApp2
         {
             get { return userControl31; }
         }
+        public RichTextBox rtb
+        {
+            get { return userControl21.richTextBox1; }
+        }
+        public int selectLength
+        {
+            get { return this.selen; }
+        }
+        public int selectStart
+        {
+            get { return this.sestart; }
+        }
 
         public Form1()
         {
@@ -39,17 +52,19 @@ namespace WindowsFormsApp2
         }
 
         //userControl11 --> home
-        //userControl21 --> the analyzer
+        //userControl21 --> the analyzerS
         private void Home_Click(object sender, EventArgs e)
         {
+            // Changing the BackColor of "Home" Button
             Home.BackColor = System.Drawing.ColorTranslator.FromHtml("#DDDDDD");
+            // Changing the BackColor of "Analyzer" Button
             Analyze.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
+            // Changing the BackColor of "Settings" Button
             Settings.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
             userControl11.Show();
             userControl21.Hide();
             userControl31.Hide();
             userControl11.BringToFront();
-
         }
 
         private void Analyze_Click(object sender, EventArgs e)

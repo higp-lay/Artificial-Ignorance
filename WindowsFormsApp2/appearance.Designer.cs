@@ -86,6 +86,7 @@
             this.fontFamilyButton.Size = new System.Drawing.Size(1204, 103);
             this.fontFamilyButton.TabIndex = 9;
             this.fontFamilyButton.UseVisualStyleBackColor = true;
+            this.fontFamilyButton.Click += new System.EventHandler(this.fontFamilyButton_Click);
             this.fontFamilyButton.Paint += new System.Windows.Forms.PaintEventHandler(this.fontFamilyButton_Paint);
             // 
             // comboBox1

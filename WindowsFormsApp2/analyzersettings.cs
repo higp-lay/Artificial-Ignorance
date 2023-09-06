@@ -25,7 +25,7 @@ namespace WindowsFormsApp2
         {
             comboBox1.DrawMode = DrawMode.OwnerDrawFixed;
             comboBox1.DrawItem += new DrawItemEventHandler(fontCombo_DrawItem);
-            initThisWidth = this.Width;
+            initThisWidth = this.Size.Width;
             label10.Text = Properties.Settings.Default.initialDirectory;
             //MessageBox.Show(initThisWidth.ToString());
             label1.Font = new Font(Properties.Appearance.Default.FontFamily, 24, FontStyle.Bold | FontStyle.Underline);
@@ -100,10 +100,6 @@ namespace WindowsFormsApp2
             reset.Location = new Point(defaultFont.Location.X, showFileDialog.Location.Y + showFileDialog.Size.Height + 5);
             defaultSize.Size = reset.Size = defaultDir.Size = showFileDialog.Size = defaultFont.Size;
 
-
-
-
-            
             pictureBox1.Location = new Point(showFileDialog.Location.X + showFileDialog.Size.Width - pictureBox1.Size.Width - (showFileDialog.Size.Height - pictureBox1.Size.Height) / 2, showFileDialog.Location.Y + (defaultFont.Size.Height - comboBox1.Size.Height) / 2); ;
 
             comboBox1.Location = new Point(defaultFont.Location.X + defaultFont.Size.Width - comboBox1.Size.Width - (defaultFont.Size.Height - comboBox1.Size.Height) / 2, defaultFont.Location.Y + (defaultFont.Size.Height - comboBox1.Size.Height) / 2);

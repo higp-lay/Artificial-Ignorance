@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Syncfusion.Blazor.SplitButtons.22.2.12\build\Syncfusion.Blazor.SplitButtons.props" Condition="Exists('..\packages\Syncfusion.Blazor.SplitButtons.22.2.12\build\Syncfusion.Blazor.SplitButtons.props')" />
   <Import Project="..\packages\SixLabors.ImageSharp.3.0.2\build\SixLabors.ImageSharp.props" Condition="Exists('..\packages\SixLabors.ImageSharp.3.0.2\build\SixLabors.ImageSharp.props')" />
   <Import Project="..\packages\IronPdf.Slim.2023.8.6\build\IronPdf.Slim.props" Condition="Exists('..\packages\IronPdf.Slim.2023.8.6\build\IronPdf.Slim.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -181,6 +182,12 @@
     <Compile Include="appearance.Designer.cs">
       <DependentUpon>appearance.cs</DependentUpon>
     </Compile>
+    <Compile Include="findandreplace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="findandreplace.Designer.cs">
+      <DependentUpon>findandreplace.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -217,6 +224,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="appearance.resx">
       <DependentUpon>appearance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="findandreplace.resx">
+      <DependentUpon>findandreplace.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -290,6 +300,7 @@
     <Error Condition="!Exists('..\packages\IronSoftware.Native.PdfModel.2023.8.17287\build\net\IronSoftware.Native.PdfModel.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\IronSoftware.Native.PdfModel.2023.8.17287\build\net\IronSoftware.Native.PdfModel.targets'))" />
     <Error Condition="!Exists('..\packages\IronPdf.Slim.2023.8.6\build\IronPdf.Slim.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\IronPdf.Slim.2023.8.6\build\IronPdf.Slim.props'))" />
     <Error Condition="!Exists('..\packages\SixLabors.ImageSharp.3.0.2\build\SixLabors.ImageSharp.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SixLabors.ImageSharp.3.0.2\build\SixLabors.ImageSharp.props'))" />
+    <Error Condition="!Exists('..\packages\Syncfusion.Blazor.SplitButtons.22.2.12\build\Syncfusion.Blazor.SplitButtons.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Syncfusion.Blazor.SplitButtons.22.2.12\build\Syncfusion.Blazor.SplitButtons.props'))" />
   </Target>
   <Import Project="..\packages\Grpc.Core.2.46.6\build\net45\Grpc.Core.targets" Condition="Exists('..\packages\Grpc.Core.2.46.6\build\net45\Grpc.Core.targets')" />
   <Import Project="..\packages\IronPdf.Native.Chrome.Windows.2023.8.17287\build\net\IronPdf.Native.Chrome.Windows.targets" Condition="Exists('..\packages\IronPdf.Native.Chrome.Windows.2023.8.17287\build\net\IronPdf.Native.Chrome.Windows.targets')" />

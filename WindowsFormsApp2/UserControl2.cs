@@ -636,7 +636,6 @@ namespace WindowsFormsApp2
             var textBoxSize = label1.Size;
             var imageSize = pictureBox1.Size;
 
-
             //MessageBox.Show(this.rtbRatio.Item1.ToString());
             richTextBox1.Size = new System.Drawing.Size(1600 + (this.Size.Width-initScreen.Width), 950 + (this.Size.Height-initScreen.Height));
             //MessageBox.Show(richTextBox1.Size.Height.ToString());
@@ -644,6 +643,7 @@ namespace WindowsFormsApp2
             submit.Location = new System.Drawing.Point((rtbSELocation.X + this.Size.Width) / 2 - textBoxSize.Width / 2, rtbSELocation.Y - 50);
             import.Location = new System.Drawing.Point((rtbSELocation.X + this.Size.Width) / 2 - textBoxSize.Width / 2, rtbSELocation.Y - 100);
             save.Location = new System.Drawing.Point((rtbSELocation.X + this.Size.Width) / 2 - textBoxSize.Width / 2, rtbSELocation.Y - 150);
+            find.Location = new System.Drawing.Point((rtbSELocation.X + this.Size.Width) / 2 - textBoxSize.Width / 2, rtbSELocation.Y - 200);
             label1.Location = new System.Drawing.Point((rtbSELocation.X + this.Size.Width) / 2 - textBoxSize.Width / 2, richTextBox1.Location.Y);
             pictureBox1.Location = new System.Drawing.Point((rtbSELocation.X + this.Size.Width) / 2 - textBoxSize.Width / 2, label1.Location.Y + label1.Size.Height + 20);
             label2.Location = new System.Drawing.Point((rtbSELocation.X + this.Size.Width) / 2 - textBoxSize.Width / 2, pictureBox1.Location.Y + pictureBox1.Size.Height + 20);
@@ -682,6 +682,10 @@ namespace WindowsFormsApp2
                 richTextBox1.Text = "";
                 richTextBox1.ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
             }
+
+            richTextBox1.SelectAll();
+            richTextBox1.SelectionBackColor = System.Drawing.Color.White;
+            richTextBox1.DeselectAll();
         }
 
         private void richTextBox1_Leave(object sender, EventArgs e)
@@ -1014,12 +1018,10 @@ namespace WindowsFormsApp2
                 richTextBox1.Font = new Font(Properties.Settings.Default.fontFamily, Properties.Settings.Default.fontSize, FontStyle.Regular);
             }
         }
-
         private void UserControl2_Load(object sender, EventArgs e)
         {
             fontCombo.DrawMode = DrawMode.OwnerDrawFixed;
             fontCombo.DrawItem += new DrawItemEventHandler(fontCombo_DrawItem);
-
 
 
             //richTextBox1.SpellCheck.IsEnabled = true;
@@ -1043,8 +1045,29 @@ namespace WindowsFormsApp2
             label2.BackColor = color;
             wordslabel.BackColor = color;
         }
-        
 
+        private void find_Click(object sender, EventArgs e)
+        {
+            findandreplace findandreplace1 = new findandreplace();
+            var color = System.Drawing.ColorTranslator.FromHtml($"#{Properties.Appearance.Default.BackColor}");
+            findandreplace1.BackColor = color;
+            findandreplace1.Show(this);
+
+            string essay = richTextBox1.Text;
+            for(int i = 0; i < essay.Length; i++)
+            {
+
+            }
+        }
+
+        private void richTextBox1_MouseEnter(object sender, EventArgs e)
+        {
+        }
+    }
+
+    public class ActionToCallEvent : EventArgs
+    {
+        private ActionToCallEvent() { }
     }
 
     public class analyzer

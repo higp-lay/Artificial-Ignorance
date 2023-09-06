@@ -35,6 +35,7 @@ namespace WindowsFormsApp2
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.versionlabel = new System.Windows.Forms.Label();
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.Analyze = new System.Windows.Forms.Button();
             this.Settings = new System.Windows.Forms.Button();
@@ -43,7 +44,6 @@ namespace WindowsFormsApp2
             this.userControl11 = new WindowsFormsApp2.UserControl1();
             this.userControl21 = new WindowsFormsApp2.UserControl2();
             this.userControl31 = new WindowsFormsApp2.UserControl3();
-            this.versionlabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,6 +58,11 @@ namespace WindowsFormsApp2
             this.panel1.Controls.Add(this.Home);
             this.panel1.Name = "panel1";
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // versionlabel
+            // 
+            resources.ApplyResources(this.versionlabel, "versionlabel");
+            this.versionlabel.Name = "versionlabel";
             // 
             // splitter2
             // 
@@ -107,11 +112,6 @@ namespace WindowsFormsApp2
             resources.ApplyResources(this.userControl31, "userControl31");
             this.userControl31.Name = "userControl31";
             this.userControl31.Load += new System.EventHandler(this.userControl31_Load);
-            // 
-            // versionlabel
-            // 
-            resources.ApplyResources(this.versionlabel, "versionlabel");
-            this.versionlabel.Name = "versionlabel";
             // 
             // Form1
             // 

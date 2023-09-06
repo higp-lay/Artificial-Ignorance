@@ -113,6 +113,9 @@ namespace WindowsFormsApp2
             form1.UC2.TabStop = !form1.UC2.TabStop;
             form1.UC3.TabStop = !form1.UC3.TabStop;
             form1.changeFont();
+            reset.Refresh();
+            theme.Refresh();
+            fontFamilyButton.Refresh();
 
 
         }
@@ -162,6 +165,11 @@ namespace WindowsFormsApp2
         private void reset_Paint(object sender, PaintEventArgs e)
         {
             TextRenderer.DrawText(e.Graphics, "Reset Appearance Settings", new Font(Properties.Appearance.Default.FontFamily, 20, FontStyle.Regular), new Point(15, 10), Color.Black, TextFormatFlags.NoPrefix);
+
+        }
+
+        private void fontFamilyButton_Click(object sender, EventArgs e)
+        {
 
         }
 
