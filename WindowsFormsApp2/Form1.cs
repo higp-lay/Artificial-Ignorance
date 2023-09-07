@@ -19,7 +19,7 @@ namespace WindowsFormsApp2
     public partial class Form1 : Form
     {
         const string version = "0.3.0";
-        public int selen, sestart;
+        private int selen = -1, sestart = -1;
 
         public UserControl UC1
         {
@@ -40,10 +40,12 @@ namespace WindowsFormsApp2
         public int selectLength
         {
             get { return this.selen; }
+            set { this.selen = value; }
         }
         public int selectStart
         {
             get { return this.sestart; }
+            set { this.sestart = value; }
         }
 
         public Form1()

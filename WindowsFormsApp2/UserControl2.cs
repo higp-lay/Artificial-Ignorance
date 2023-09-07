@@ -1062,6 +1062,12 @@ namespace WindowsFormsApp2
 
         private void richTextBox1_MouseEnter(object sender, EventArgs e)
         {
+            Form1 form = (Form1)this.FindForm();
+            if(form.selectLength != -1 && form.selectStart != -1)
+            {
+                richTextBox1.SelectionLength = form.selectLength;
+                richTextBox1.SelectionStart = form.selectStart;
+            }
         }
     }
 
