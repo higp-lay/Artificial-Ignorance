@@ -244,7 +244,7 @@ namespace WindowsFormsApp2
             {
                 findIndex++;
                 form.rtb.SelectionLength = form.selectLength = replacefindtb.Text.Length;
-                form.rtb.SelectionStart = form.selectStart = Math.Max(0, a[findIndex] - replacefindtb.Text.Length + replacereplacetb.Text.Length);
+                form.rtb.SelectionStart = form.selectStart = a[findIndex];
                 form.rtb.SelectionBackColor = Color.Yellow;
                 return;
             }

@@ -436,8 +436,8 @@ namespace WindowsFormsApp2
             var sortedDict = from entry in words orderby entry.Value descending select entry;
 
 
-            var dtnp = DateTime.Now.ToString("yyyy-MM-dd hhmmss");
-            var dtn = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+            var dtnp = DateTime.Now.ToString("yyyy-MM-dd HHmmss");
+            var dtn = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             // PDF maker.
             // Reference: https://ironpdf.com/blog/using-ironpdf/csharp-create-pdf-tutorial/
             var pdf = new ChromePdfRenderer
@@ -498,9 +498,9 @@ namespace WindowsFormsApp2
 
 
             PdfDocument doc = pdf.RenderHtmlAsPdf(html);
-            Cursor.Current = Cursors.Default;
             string source = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "Report.pdf");
             string path = "";
+            Cursor.Current = Cursors.Default;
             if (Properties.Settings.Default.showFolderDialog)
             {
                 saveFileDialog2.Filter = "pdf files (*.pdf)|*.pdf";
@@ -526,6 +526,7 @@ namespace WindowsFormsApp2
 
                 path += ".pdf";
             }
+            Cursor.Current = Cursors.WaitCursor;
 
             var x = 1;
             while (File.Exists(path))
@@ -538,6 +539,7 @@ namespace WindowsFormsApp2
 
             doc.SaveAs(path);
             MessageBox.Show("Report saved in " + Path.GetDirectoryName(path), "Finished", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Cursor.Current = Cursors.Default;
 
             //try
             //{

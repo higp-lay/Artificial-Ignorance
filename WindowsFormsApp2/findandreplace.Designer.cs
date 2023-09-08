@@ -37,15 +37,15 @@
             this.findcancel = new System.Windows.Forms.Button();
             this.findfindtb = new System.Windows.Forms.TextBox();
             this.replace = new System.Windows.Forms.TabPage();
+            this.replaceall = new System.Windows.Forms.Button();
+            this.replaceone = new System.Windows.Forms.Button();
+            this.replacefindnext = new System.Windows.Forms.Button();
+            this.replacecancel = new System.Windows.Forms.Button();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.replacereplacetb = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.replacefindtb = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.replacecancel = new System.Windows.Forms.Button();
-            this.replacefindnext = new System.Windows.Forms.Button();
-            this.replaceone = new System.Windows.Forms.Button();
-            this.replaceall = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.find.SuspendLayout();
             this.replace.SuspendLayout();
@@ -151,6 +151,59 @@
             this.replace.TabIndex = 1;
             this.replace.Text = "Replace";
             // 
+            // replaceall
+            // 
+            this.replaceall.Location = new System.Drawing.Point(445, 169);
+            this.replaceall.Name = "replaceall";
+            this.replaceall.Size = new System.Drawing.Size(93, 29);
+            this.replaceall.TabIndex = 11;
+            this.replaceall.Text = "Replace &All";
+            this.replaceall.UseVisualStyleBackColor = true;
+            this.replaceall.Click += new System.EventHandler(this.replaceall_Click);
+            // 
+            // replaceone
+            // 
+            this.replaceone.Location = new System.Drawing.Point(344, 169);
+            this.replaceone.Name = "replaceone";
+            this.replaceone.Size = new System.Drawing.Size(93, 29);
+            this.replaceone.TabIndex = 10;
+            this.replaceone.Text = "&Replace";
+            this.replaceone.UseVisualStyleBackColor = true;
+            this.replaceone.Click += new System.EventHandler(this.replaceone_Click);
+            // 
+            // replacefindnext
+            // 
+            this.replacefindnext.Location = new System.Drawing.Point(546, 169);
+            this.replacefindnext.Name = "replacefindnext";
+            this.replacefindnext.Size = new System.Drawing.Size(93, 29);
+            this.replacefindnext.TabIndex = 9;
+            this.replacefindnext.Text = "Find &Next";
+            this.replacefindnext.UseVisualStyleBackColor = true;
+            this.replacefindnext.Click += new System.EventHandler(this.replacefindnext_Click);
+            // 
+            // replacecancel
+            // 
+            this.replacecancel.Location = new System.Drawing.Point(647, 169);
+            this.replacecancel.Name = "replacecancel";
+            this.replacecancel.Size = new System.Drawing.Size(93, 29);
+            this.replacecancel.TabIndex = 8;
+            this.replacecancel.Text = "&Cancel";
+            this.replacecancel.UseVisualStyleBackColor = true;
+            this.replacecancel.Click += new System.EventHandler(this.replacecancel_Click);
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Checked = true;
+            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox2.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox2.Location = new System.Drawing.Point(16, 171);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(124, 24);
+            this.checkBox2.TabIndex = 7;
+            this.checkBox2.Text = "Case sensitive";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
             // replacereplacetb
             // 
             this.replacereplacetb.Location = new System.Drawing.Point(126, 87);
@@ -186,59 +239,6 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Find:";
             // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Checked = true;
-            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox2.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.Location = new System.Drawing.Point(16, 171);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(124, 24);
-            this.checkBox2.TabIndex = 7;
-            this.checkBox2.Text = "Case sensitive";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // replacecancel
-            // 
-            this.replacecancel.Location = new System.Drawing.Point(647, 169);
-            this.replacecancel.Name = "replacecancel";
-            this.replacecancel.Size = new System.Drawing.Size(93, 29);
-            this.replacecancel.TabIndex = 8;
-            this.replacecancel.Text = "&Cancel";
-            this.replacecancel.UseVisualStyleBackColor = true;
-            this.replacecancel.Click += new System.EventHandler(this.replacecancel_Click);
-            // 
-            // replacefindnext
-            // 
-            this.replacefindnext.Location = new System.Drawing.Point(546, 169);
-            this.replacefindnext.Name = "replacefindnext";
-            this.replacefindnext.Size = new System.Drawing.Size(93, 29);
-            this.replacefindnext.TabIndex = 9;
-            this.replacefindnext.Text = "Find &Next";
-            this.replacefindnext.UseVisualStyleBackColor = true;
-            this.replacefindnext.Click += new System.EventHandler(this.replacefindnext_Click);
-            // 
-            // replaceone
-            // 
-            this.replaceone.Location = new System.Drawing.Point(344, 169);
-            this.replaceone.Name = "replaceone";
-            this.replaceone.Size = new System.Drawing.Size(93, 29);
-            this.replaceone.TabIndex = 10;
-            this.replaceone.Text = "&Replace";
-            this.replaceone.UseVisualStyleBackColor = true;
-            this.replaceone.Click += new System.EventHandler(this.replaceone_Click);
-            // 
-            // replaceall
-            // 
-            this.replaceall.Location = new System.Drawing.Point(445, 169);
-            this.replaceall.Name = "replaceall";
-            this.replaceall.Size = new System.Drawing.Size(93, 29);
-            this.replaceall.TabIndex = 11;
-            this.replaceall.Text = "Replace &All";
-            this.replaceall.UseVisualStyleBackColor = true;
-            this.replaceall.Click += new System.EventHandler(this.replaceall_Click);
-            // 
             // findandreplace
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -250,7 +250,7 @@
             this.MaximumSize = new System.Drawing.Size(800, 300);
             this.MinimumSize = new System.Drawing.Size(800, 300);
             this.Name = "findandreplace";
-            this.Text = "findandreplace";
+            this.Text = "Find & Replace";
             this.Load += new System.EventHandler(this.findandreplace_Load);
             this.tabControl1.ResumeLayout(false);
             this.find.ResumeLayout(false);

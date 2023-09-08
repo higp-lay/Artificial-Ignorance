@@ -18,7 +18,7 @@ namespace WindowsFormsApp2
 {
     public partial class Form1 : Form
     {
-        const string version = "0.3.0";
+        const string version = "0.3.1";
         private int selen = -1, sestart = -1;
 
         public UserControl UC1
