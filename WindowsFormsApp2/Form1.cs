@@ -18,7 +18,7 @@ namespace WindowsFormsApp2
 {
     public partial class Form1 : Form
     {
-        const string version = "0.3.1";
+        const string version = "0.8.0";
         private int selen = -1, sestart = -1;
 
         public UserControl UC1
@@ -96,8 +96,8 @@ namespace WindowsFormsApp2
             //Properties.Appearance.Default.Reset();
             //Properties.Appearance.Default.Save();
 
-            this.Text = "Artificial Ignorance (AI) Text Analyzer v" + version;
-            versionlabel.Text = "AI - v" + version + "\r\nBy Hugo Lau\r\n";
+            this.Text = "Artificial Ignorance (AI) Text Analyzer " + version;
+            versionlabel.Text = "AI " + version + "\r\nBy Hugo Lau\r\n";
             this.Home_Click(sender, e);
             this.Form1_Resize(sender, e);
             //Analyze.Font = new Font("UD Digi Kyokasho NK-B", 24, FontStyle.Bold);
