@@ -121,11 +121,41 @@
   <data name="panel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="close.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Comic Sans MS, 15pt, style=Bold</value>
+  </data>
+  <data name="close.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="close.Location" type="System.Drawing.Point, System.Drawing">
+    <value>41, 476</value>
+  </data>
+  <data name="close.Size" type="System.Drawing.Size, System.Drawing">
+    <value>129, 61</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="close.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="close.Text" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="&gt;&gt;close.Name" xml:space="preserve">
+    <value>close</value>
+  </data>
+  <data name="&gt;&gt;close.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;close.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;close.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="versionlabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="versionlabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Comic Sans MS, 10pt, style=Bold</value>
   </data>
@@ -154,7 +184,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;versionlabel.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="splitter2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -178,7 +208,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;splitter2.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="Analyze.Font" type="System.Drawing.Font, System.Drawing">
     <value>Comic Sans MS, 15pt, style=Bold</value>
@@ -208,7 +238,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;Analyze.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="Settings.Font" type="System.Drawing.Font, System.Drawing">
     <value>Comic Sans MS, 15pt, style=Bold</value>
@@ -238,7 +268,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;Settings.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="Home.Font" type="System.Drawing.Font, System.Drawing">
     <value>Comic Sans MS, 15pt, style=Bold</value>
@@ -274,7 +304,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;Home.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
@@ -298,13 +328,34 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
+  </data>
+  <data name="userControl22.Location" type="System.Drawing.Point, System.Drawing">
+    <value>206, 25</value>
+  </data>
+  <data name="userControl22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1200, 497</value>
+  </data>
+  <data name="userControl22.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;userControl22.Name" xml:space="preserve">
+    <value>userControl22</value>
+  </data>
+  <data name="&gt;&gt;userControl22.Type" xml:space="preserve">
+    <value>WindowsFormsApp2.UserControl2, WindowsFormsApp2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;userControl22.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;userControl22.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="userControl11.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="userControl11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 0</value>
+    <value>464, 70</value>
   </data>
   <data name="userControl11.Size" type="System.Drawing.Size, System.Drawing">
     <value>1069, 623</value>
@@ -322,34 +373,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;userControl11.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="userControl21.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="userControl21.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 0</value>
-  </data>
-  <data name="userControl21.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1069, 623</value>
-  </data>
-  <data name="userControl21.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;userControl21.Name" xml:space="preserve">
-    <value>userControl21</value>
-  </data>
-  <data name="&gt;&gt;userControl21.Type" xml:space="preserve">
-    <value>WindowsFormsApp2.UserControl2, WindowsFormsApp2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;userControl21.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;userControl21.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="userControl31.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 3</value>
+    <value>317, 304</value>
   </data>
   <data name="userControl31.Size" type="System.Drawing.Size, System.Drawing">
     <value>1358, 673</value>
@@ -367,7 +394,28 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;userControl31.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
+  </data>
+  <data name="userControl12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>610, 70</value>
+  </data>
+  <data name="userControl12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>374, 161</value>
+  </data>
+  <data name="userControl12.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;userControl12.Name" xml:space="preserve">
+    <value>userControl12</value>
+  </data>
+  <data name="&gt;&gt;userControl12.Type" xml:space="preserve">
+    <value>WindowsFormsApp2.UserControl1, WindowsFormsApp2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;userControl12.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;userControl12.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

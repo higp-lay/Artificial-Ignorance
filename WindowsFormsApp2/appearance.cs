@@ -110,7 +110,8 @@ namespace WindowsFormsApp2
             label3.Font = new Font(Properties.Appearance.Default.FontFamily, 24, FontStyle.Bold | FontStyle.Underline);
 
             form1.UC1.TabStop = !form1.UC1.TabStop;
-            form1.UC2.TabStop = !form1.UC2.TabStop;
+            //form1.UC2.TabStop = !form1.UC2.TabStop;
+            //form1.UC2.Font = new Font(Properties.Appearance.Default.FontFamily, 24, FontStyle.Regular);
             form1.UC3.TabStop = !form1.UC3.TabStop;
             form1.changeFont();
             reset.Refresh();

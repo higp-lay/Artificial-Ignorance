@@ -41,6 +41,7 @@ namespace WindowsFormsApp2
     public partial class UserControl2 : System.Windows.Forms.UserControl
     {
         System.Drawing.Size initScreen = new System.Drawing.Size(1936, 1048);
+        analyzer analyzer = new analyzer();
         public UserControl2()
         {
             InitializeComponent();
@@ -64,9 +65,31 @@ namespace WindowsFormsApp2
         {
             string l = @"<span style=""border-bottom: 1px dotted #ff0000;padding:1px"">
                 <span style=""border-bottom: 1px dotted #ff0000;"">";
+            string m = "";
             string r = @" </span>
             </span>";
-            return l + essay + r;
+            string html = "";
+            MatchCollection matches = Regex.Matches(essay, @"[\w']+|[.,!?;]");
+            Regex rg = new Regex(@"^[a-zA-Z0-9]+$");
+            analyzer.changeEssay(essay);
+            foreach (System.Text.RegularExpressions.Match match in matches)
+            {
+                if(rg.IsMatch(match.ToString()))
+                {
+                    if(match.Index != 0)
+                    {
+                        html += " ";
+                    }
+                    if(analyzer.isAWord(match.ToString())) 
+                    {
+                        html += match.ToString();
+                    } else
+                    {
+                        html += l + match.ToString() + r;
+                    }
+                } else html += match.ToString();
+            }
+            return html;
         }
 
         private void submit_Click(object sender, EventArgs e)
@@ -74,7 +97,7 @@ namespace WindowsFormsApp2
             var color = System.Drawing.ColorTranslator.FromHtml($"#{Properties.Appearance.Default.BackColor}");
             //string path = AppDomain.CurrentDomain.BaseDirectory + "wyk.txt";
             //List<string> lines = File.ReadAllLines(path).ToList();
-            analyzer analyzer = new analyzer(richTextBox1.Text);
+            analyzer.changeEssay(richTextBox1.Text);
             //MessageBox.Show("Number of Characters: " + analyzer.numberOfCharacters().ToString());
             //MessageBox.Show("Number of Words: " + analyzer.numberOfWords().ToString());
             //MessageBox.Show("Number of Sentences: " + analyzer.numberOfSentences().ToString());
@@ -167,7 +190,7 @@ namespace WindowsFormsApp2
 
             var characterr = new System.Windows.Forms.TextBox();
             panelPopup.Controls.Add(characterr);
-            characterr.Text = analyzer.numberOfCharacters().ToString();
+            characterr.Text = analyzer.characters.ToString();
             characterr.Font = new Font(Properties.Appearance.Default.FontFamily, 14, FontStyle.Regular);
             characterr.AutoSize = true;
             characterr.ReadOnly = true;
@@ -188,7 +211,7 @@ namespace WindowsFormsApp2
 
             var wordr = new System.Windows.Forms.TextBox();
             panelPopup.Controls.Add(wordr);
-            wordr.Text = analyzer.numberOfWords().ToString();
+            wordr.Text = analyzer.words.ToString();
             wordr.Font = new Font(Properties.Appearance.Default.FontFamily, 14, FontStyle.Regular);
             //wordr.Size = new Size(100, 20);
             wordr.AutoSize = true;
@@ -209,7 +232,7 @@ namespace WindowsFormsApp2
 
             var sentencer = new System.Windows.Forms.TextBox();
             panelPopup.Controls.Add(sentencer);
-            sentencer.Text = analyzer.numberOfSentences().ToString();
+            sentencer.Text = analyzer.sentences.ToString();
             sentencer.Font = new Font(Properties.Appearance.Default.FontFamily, 14, FontStyle.Regular);
             //sentencer.Size = new Size(100, 20);
             sentencer.AutoSize = true;
@@ -226,11 +249,11 @@ namespace WindowsFormsApp2
             readingl.ReadOnly = true;
             readingl.BackColor = color;
             readingl.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            readingl.Location = new System.Drawing.Point(formPopup.Size.Width / 2 + 10, characterl.Location.Y);
+            readingl.Location = new System.Drawing.Point(formPopup.Size.Width / 2 - 10, characterl.Location.Y);
 
             var readingr = new System.Windows.Forms.TextBox();
             panelPopup.Controls.Add(readingr);
-            readingr.Text = Math.Round(analyzer.estimatedReadingSeconds(), 1, MidpointRounding.AwayFromZero).ToString() + 's';
+            readingr.Text = Math.Round(analyzer.readingt, 1, MidpointRounding.AwayFromZero).ToString() + 's';
             readingr.Font = new Font(Properties.Appearance.Default.FontFamily, 14, FontStyle.Regular);
             //readingr.Size = new Size(100, 20);
             readingr.AutoSize = true;
@@ -261,11 +284,11 @@ namespace WindowsFormsApp2
             speakingl.ReadOnly = true;
             speakingl.BackColor = color;
             speakingl.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            speakingl.Location = new System.Drawing.Point(formPopup.Size.Width / 2 + 10, wordl.Location.Y);
+            speakingl.Location = new System.Drawing.Point(formPopup.Size.Width / 2 - 10, wordl.Location.Y);
 
             var speakingr = new System.Windows.Forms.TextBox();
             panelPopup.Controls.Add(speakingr);
-            speakingr.Text = Math.Round(analyzer.estimatedSpeakingSeconds(), 1, MidpointRounding.AwayFromZero).ToString() + 's';
+            speakingr.Text = Math.Round(analyzer.speakingt, 1, MidpointRounding.AwayFromZero).ToString() + 's';
             speakingr.Font = new Font(Properties.Appearance.Default.FontFamily, 14, FontStyle.Regular);
             //speakingr.Size = new Size(100, 20);
             speakingr.AutoSize = true;
@@ -287,6 +310,27 @@ namespace WindowsFormsApp2
                 tt.SetToolTip(speakinginfo, "Calculated using the average speaking speed of 183 words per minute.");
             };
 
+            var mispelledl = new System.Windows.Forms.TextBox();
+            panelPopup.Controls.Add(mispelledl);
+            mispelledl.Text = "Mispelled words";
+            mispelledl.Font = new Font(Properties.Appearance.Default.FontFamily, 14, FontStyle.Regular);
+            mispelledl.Size = new System.Drawing.Size(150, 20);
+            mispelledl.ReadOnly = true;
+            mispelledl.BackColor = color;
+            mispelledl.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            mispelledl.Location = new System.Drawing.Point(formPopup.Size.Width / 2 - 10, sentencel.Location.Y);
+
+
+            var mispelledr = new System.Windows.Forms.TextBox();
+            panelPopup.Controls.Add(mispelledr);
+            mispelledr.Text = analyzer.mispelledWords().ToString();
+            mispelledr.Font = new Font(Properties.Appearance.Default.FontFamily, 14, FontStyle.Regular);
+            //speakingr.Size = new Size(100, 20);
+            mispelledr.AutoSize = true;
+            mispelledr.ReadOnly = true;
+            mispelledr.BackColor = color;
+            mispelledr.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            mispelledr.Location = new System.Drawing.Point(formPopup.Size.Width - mispelledr.Size.Width - 10, mispelledl.Location.Y);
 
 
             var readability = new System.Windows.Forms.TextBox();
@@ -312,7 +356,7 @@ namespace WindowsFormsApp2
 
             var charactersperwordr = new System.Windows.Forms.TextBox();
             panelPopup.Controls.Add(charactersperwordr);
-            charactersperwordr.Text = Math.Round(analyzer.averageWordLength(), 1, MidpointRounding.AwayFromZero).ToString();
+            charactersperwordr.Text = Math.Round(analyzer.avewordslen, 1, MidpointRounding.AwayFromZero).ToString();
             charactersperwordr.Font = new Font(Properties.Appearance.Default.FontFamily, 14, FontStyle.Regular);
             //speakingr.Size = new Size(100, 20);
             speakingr.AutoSize = true;
@@ -329,11 +373,11 @@ namespace WindowsFormsApp2
             wordspersentencel.ReadOnly = true;
             wordspersentencel.BackColor = color;
             wordspersentencel.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            wordspersentencel.Location = new System.Drawing.Point(formPopup.Size.Width / 2 + 10, charactersperwordl.Location.Y);
+            wordspersentencel.Location = new System.Drawing.Point(formPopup.Size.Width / 2 - 10, charactersperwordl.Location.Y);
 
             var wordspersentencer = new System.Windows.Forms.TextBox();
             panelPopup.Controls.Add(wordspersentencer);
-            wordspersentencer.Text = Math.Round(analyzer.averageSentenceLength(), 1, MidpointRounding.AwayFromZero).ToString();
+            wordspersentencer.Text = Math.Round(analyzer.avesentenceslen, 1, MidpointRounding.AwayFromZero).ToString();
             wordspersentencer.Font = new Font(Properties.Appearance.Default.FontFamily, 14, FontStyle.Regular);
             //speakingr.Size = new Size(100, 20);
             speakingr.AutoSize = true;
@@ -423,7 +467,7 @@ namespace WindowsFormsApp2
         private void generatePDFReport()
         {
             Cursor.Current = Cursors.WaitCursor;
-            analyzer analyzer = new analyzer(richTextBox1.Text);
+            analyzer.changeEssay(richTextBox1.Text);
             MatchCollection matches = analyzer.splitToWords();
             Dictionary<string, int> words = new Dictionary<string, int>();
             foreach (System.Text.RegularExpressions.Match match in matches)
@@ -457,44 +501,92 @@ namespace WindowsFormsApp2
                     }
                 }
             };
-            string html = "<div style=\"font-family:'Comic Sans MS'\"><h1 style=\"text-align:center\">Artificial Ignorance (AI) <br>Text Analyzer</h1>" +
+            string tmphtml = "";
+            string[] notes =
+            {
+                "Your text is extremely difficult to read. Best understood by professionals.",
+                "Your text is very difficult to read. Understood by university graduates.",
+                "Your text is difficult to read. Understood by college students.",
+                "Your text is fairly difficult to read. Understood by 10th to 12th graders.",
+                "Your text is moderately easy to read. Easily understood by 8th and 9th graders.",
+                "Your text is fairly easy to read. Easily understood by 7th graders.",
+                "Your text is easy to read. Easily understood by 6th graders. Conversational English for consumers.",
+                "Your text is very easy to read. Easily understood by 5th graders.",
+            };
+            double[] boundary =
+            {
+                10.0, 30.0, 50.0, 60.0, 70.0, 80.0, 90.0
+            };
+            var rsindex = boundary.Length;
+            var rs = analyzer.readabilityScore();
+            for (int i = boundary.Length-1; i >= 0; i--)
+            {
+                if (rs <= boundary[i]) rsindex--;
+                else break;
+            }
+            var htmlcolor = "#" + Properties.Appearance.Default.BackColor;
+            for(int i = 0; i <= boundary.Length; i++)
+            {
+                var tt = boundary[Math.Min(i, boundary.Length-1)];
+                var sign = "&le;";
+                if (i == boundary.Length) sign = "&gt;";
+                string color = "white";
+                if (rsindex == i) color = "green";
+                tmphtml += $"<tr bgcolor=\"{color}\">" +
+                    $"<td style=\"font-size:12px;text-align:center;border:1px solid black;\">{sign} {tt.ToString("0.0")}</td><td style=\"font-size:12px;border:1px solid black;\">{notes[i]}</td>" +
+                    "</tr>";
+            }
+            string html = 
+                $"<div style=\"font-family:'Comic Sans MS';\"><h1 style=\"text-align:center\">Artificial Ignorance (AI) <br>Text Analyzer</h1>" +
                 "<img style=\"margin-left:auto;margin-right:auto;display:block\" width=\"100px\" src=\"" + System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "logo.png") + "\">" +
                 "<hr>" +
                 "<p>" +
                     essayHTML(analyzer.essay) +
                 $@"</p>
                 <hr>" +
-                "<table style=\"padding: 20px;width:100%;border:1px solid black\">" +
-                    "<tr style=\"color:#99B4D1\">" +
-                        $@"<td> {analyzer.numberOfCharacters().ToString()} </td>
-                        <td> {matches.Count} </td>
-                        <td> {analyzer.numberOfSentences().ToString()} </td>
-                        <td> {Math.Round(analyzer.averageSentenceLength(), 1, MidpointRounding.AwayFromZero).ToString()} </td>
-                        <td> {Math.Round(analyzer.estimatedReadingSeconds(), 1, MidpointRounding.AwayFromZero).ToString()}s </td>
-                        <td> {Math.Round(analyzer.estimatedSpeakingSeconds(), 1, MidpointRounding.AwayFromZero).ToString()}s </td>
-                        <td> {Math.Round(analyzer.readabilityScore(), 1, MidpointRounding.AwayFromZero).ToString()} </td>
-                    </tr>" +
-                    "<tr style=\"font-size:10;color:gray\">" +
-                        $@"<td>characters</td>
-                        <td>words</td>
-                        <td>sentences</td>
-                        <td>words per sentence</td>
-                        <td>reading time</td>
-                        <td>speaking time</td>
-                        <td>readability score</td>
-                    </tr>
-                </table> 
-                <p> Frequently used words list: </p>" +
-                "<ol style=\"font-size:15px\">";
-
+                "<h2>General Metrics</h2>" +
+                "<table style=\"padding: 5px;margin:0px auto;width:100%;border:1px solid white\">" +
+                    $"<tr style=\"color:{htmlcolor};font-size:25px;vertical-align: bottom\">" +
+                        $"<td> {analyzer.characters.ToString()}</td>" + "<td style=\"font-size:12;color:gray\">characters</td>" +
+                        $"<td> {matches.Count}" + "<td style=\"font-size:12;color:gray\">words</td>" +
+                        $"<td> {analyzer.sentences.ToString()}" + "<td style=\"font-size:12;color:gray\">sentences</td>" +
+                    "</tr>" +
+                    $"<tr style=\"color:{htmlcolor};font-size:25px;vertical-align: bottom\">" +
+                        $"<td> {analyzer.readingt.ToString("0.0")}s</td>" + "<td style=\"font-size:12;color:gray\">reading time</td>" +
+                        $"<td> {analyzer.speakingt.ToString("0.0")}s</td>" + "<td style=\"font-size:12;color:gray\">speaking time</td>" +
+                        $"<td> {analyzer.mispelledWords().ToString()}" + "<td style=\"font-size:12;color:gray\">mispelled words</td>" +
+                    $@"</tr>
+                </table>" +
+                "<hr><h2>Readability</h2>" +
+                "<table style=\"padding:5px;margin:0px auto;width:100%;border: 1px solid white\">" +
+                    $"<tr style=\"color:{htmlcolor};font-size:25px;vertical-align: bottom\">" +
+                            $"<td> {analyzer.avewordslen.ToString("0.0")}</td>" + "<td style=\"font-size:12px;color:gray\">character per word</td>" +
+                            $"<td> {analyzer.avesentenceslen.ToString("0.0")}" + "<td style=\"font-size:12px;color:gray\">word per sentence</td>" +
+                            $"<td> {rs.ToString("0.0")}" + "<td style=\"font-size:12;color:gray\">readability score</td>" +
+                        "</tr>" +
+                "</table>" +
+                "<table style=\"padding;5px;margin:0px auto;width:80%;border:1px solid black;border-collapse:collapse;font-size:10>" +
+                    "<tr style=\"vertical-align: bottom;\">" +
+                        "<td style=\"font-size:12px;border:1px solid black;text-align:center\">Readability Score</td><td style=\"font-size:12px;border:1px solid black;\">Description</td>" +
+                    "</tr>" + tmphtml +
+                "</table>" +
+                "<hr>" +
+                "<h2>Vocabulary</h2>" +
+                "<table style=\"padding:5px;margin:0px auto;width:100%;border: 1px solid white\">" +
+                    $"<tr style=\"color:{htmlcolor};font-size:25px;vertical-align: bottom\">" +
+                            $"<td> {((double)sortedDict.Count() / analyzer.words * 100).ToString("0.0")}% <a style=\"font-size:12px;color:gray\">unique words</a></td>" +
+                    "</tr>" +
+                    $"<tr style=\"color:{htmlcolor};font-size:25px;vertical-align: bottom\">" +
+                        "<td style=\"font-size:16px;color:#404040\">Frequently used vocabularies (top 10)</td>" +
+                    "</tr>";
             int cnt = 0;
             foreach (var kvp in sortedDict)
             {
-                if (cnt >= 20) break;
+                if (cnt >= 10) break;
                 cnt++;
-                html += "<li>" + kvp.Key + ": " + kvp.Value + "</p>";
+                html += $"<tr><td style=\"color:{htmlcolor}\"><li>" + kvp.Key + ": " + kvp.Value + "</li></td></tr>";
             }
-            html += "</ol></div>";
+            html += "</ol></table></div>";
 
 
             PdfDocument doc = pdf.RenderHtmlAsPdf(html);
@@ -621,7 +713,7 @@ namespace WindowsFormsApp2
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
-            analyzer analyzer = new analyzer(richTextBox1.Text);
+            analyzer.changeEssay(richTextBox1.Text);
             var cnt = analyzer.numberOfWords();
             if (richTextBox1.Text == "Type, paste, or import your text here." && richTextBox1.ForeColor == System.Drawing.ColorTranslator.FromHtml("#c0c0c0"))
             {
@@ -664,16 +756,6 @@ namespace WindowsFormsApp2
 
             //Console.WriteLine(this.Size.Width - buttonSize.Width);
             //richTextBox1.Size = new System.Drawing.Size(this.Size.Width-buttonSize.Width, (int)(this.Size.Height * this.rtbRatio.Item2));
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
 
         }
 
@@ -1022,9 +1104,9 @@ namespace WindowsFormsApp2
         }
         private void UserControl2_Load(object sender, EventArgs e)
         {
+
             fontCombo.DrawMode = DrawMode.OwnerDrawFixed;
             fontCombo.DrawItem += new DrawItemEventHandler(fontCombo_DrawItem);
-
 
             //richTextBox1.SpellCheck.IsEnabled = true;
 
@@ -1082,21 +1164,75 @@ namespace WindowsFormsApp2
     {
         public string essay;
         private const double readingwpm = 238, speakingwpm = 183;
-        public analyzer(string essay)
+        public int characters, words, sentences;
+        public double avesentenceslen, avewordslen, readingt, speakingt;
+        ScriptEngine engine;
+        ICollection<string> searchPaths;
+        ScriptScope scope;
+        ScriptSource source;
+        CompiledCode compilation, result;
+
+        public analyzer()
+        {
+            this.engine = Python.CreateEngine();
+
+            this.searchPaths = this.engine.GetSearchPaths();
+            this.searchPaths.Add(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\..\.."));
+            this.engine.SetSearchPaths(this.searchPaths);
+
+            this.scope = this.engine.CreateScope();
+
+            this.source = this.engine.CreateScriptSourceFromFile(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\syallapy.py"));
+            this.compilation = this.source.Compile();
+            this.result = this.compilation.Execute(scope);
+        }
+
+        public void changeEssay(string essay)
         {
             this.essay = essay;
+            this.words = numberOfWords();
+            this.sentences = numberOfSentences();
+            this.avesentenceslen = averageSentenceLength();
+            this.avewordslen = averageWordLength();
+            this.readingt = estimatedReadingSeconds();
+            this.speakingt = estimatedSpeakingSeconds();
+            this.characters = numberOfCharacters();
         }
 
         public bool isAWord(string s)
         {
             var oDict = new NetSpell.SpellChecker.Dictionary.WordDictionary();
-
             oDict.DictionaryFile = "en-US.dic";
             oDict.Initialize();
-            NetSpell.SpellChecker.Spelling oSpell = new NetSpell.SpellChecker.Spelling();
+            var oSpell = new NetSpell.SpellChecker.Spelling();
 
             oSpell.Dictionary = oDict;
             return oSpell.TestWord(s);
+        }
+
+        public int mispelledWords()
+        {
+            var cnt = 0;
+            MatchCollection matches = Regex.Matches(essay, @"[\w']+|[.,!?;]");
+            Regex rg = new Regex(@"^[a-zA-Z0-9]+$");
+
+            foreach (System.Text.RegularExpressions.Match match in matches)
+            {
+                if (rg.IsMatch(match.ToString()))
+                {
+                    if (!this.isAWord(match.ToString()))
+                    {
+                        //MessageBox.Show(match.ToString());
+                        cnt++;
+                    }
+                }
+            }
+            return cnt;
+        }
+        public int numberOfSyllables()
+        {
+            //MessageBox.Show(scope.GetVariable("count")("discombobulated").ToString());
+            return scope.GetVariable("count")(this.essay);
         }
 
         public bool isAbbr(int x)
@@ -1122,6 +1258,7 @@ namespace WindowsFormsApp2
 
         public int numberOfSentences()
         {
+            if (essay.Length == 0) return 0;
             int cnt = 0;
             bool flag = false;
             for (int i = 0; i < essay.Length; i++)
@@ -1157,6 +1294,7 @@ namespace WindowsFormsApp2
             return splitToWords().Count;
         }
 
+        
         public int numberOfCharacters()
         {
             return this.essay.Length;
@@ -1164,16 +1302,16 @@ namespace WindowsFormsApp2
 
         public double estimatedReadingSeconds()
         {
-            return numberOfWords() / readingwpm * 60;
+            return words / readingwpm * 60;
         }
         public double estimatedSpeakingSeconds()
         {
-            return numberOfWords() / speakingwpm * 60;
+            return words / speakingwpm * 60;
         }
 
         public double averageSentenceLength()
         {
-            return (double)numberOfWords() / numberOfSentences();
+            return (double)words / sentences;
         }
 
         public double averageWordLength()
@@ -1186,32 +1324,14 @@ namespace WindowsFormsApp2
                     cnt++;
                 }
             }
-            return cnt / (double)numberOfWords();
+            return cnt / (double)words;
         }
         
-        public int numberOfSyllables() 
-        {
-            var engine = Python.CreateEngine();
-
-            ICollection<string> searchPaths = engine.GetSearchPaths();
-            searchPaths.Add(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\..\.."));
-            //searchPaths.Add(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\..\.."));
-            engine.SetSearchPaths(searchPaths);
-
-            var scope = engine.CreateScope();
-
-            var source = engine.CreateScriptSourceFromFile(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\syallapy.py"));
-            var compilation = source.Compile();
-            var result = compilation.Execute(scope);
-
-            //MessageBox.Show(scope.GetVariable("count")("discombobulated").ToString());
-            return scope.GetVariable("count")(this.essay);
-        }
 
         public double readabilityScore()
         {
             //MessageBox.Show(words.ToString());
-            return (206.835 - 1.015 * averageSentenceLength() - 84.6 * numberOfSyllables() / numberOfWords());
+            return (206.835 - 1.015 * avesentenceslen - 84.6 * numberOfSyllables() / words);
         }
 
         

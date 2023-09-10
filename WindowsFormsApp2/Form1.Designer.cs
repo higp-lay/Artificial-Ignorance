@@ -35,15 +35,17 @@ namespace WindowsFormsApp2
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.close = new System.Windows.Forms.Button();
             this.versionlabel = new System.Windows.Forms.Label();
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.Analyze = new System.Windows.Forms.Button();
             this.Settings = new System.Windows.Forms.Button();
             this.Home = new System.Windows.Forms.Button();
+            this.userControl22 = new WindowsFormsApp2.UserControl2();
             this.homeToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.userControl11 = new WindowsFormsApp2.UserControl1();
-            this.userControl21 = new WindowsFormsApp2.UserControl2();
             this.userControl31 = new WindowsFormsApp2.UserControl3();
+            this.userControl12 = new WindowsFormsApp2.UserControl1();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,6 +53,7 @@ namespace WindowsFormsApp2
             // 
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.panel1.Controls.Add(this.close);
             this.panel1.Controls.Add(this.versionlabel);
             this.panel1.Controls.Add(this.splitter2);
             this.panel1.Controls.Add(this.Analyze);
@@ -58,6 +61,13 @@ namespace WindowsFormsApp2
             this.panel1.Controls.Add(this.Home);
             this.panel1.Name = "panel1";
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // close
+            // 
+            resources.ApplyResources(this.close, "close");
+            this.close.Name = "close";
+            this.close.UseVisualStyleBackColor = true;
+            this.close.Click += new System.EventHandler(this.close_Click);
             // 
             // versionlabel
             // 
@@ -92,19 +102,18 @@ namespace WindowsFormsApp2
             this.Home.UseVisualStyleBackColor = true;
             this.Home.Click += new System.EventHandler(this.Home_Click);
             // 
+            // userControl22
+            // 
+            this.userControl22.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            resources.ApplyResources(this.userControl22, "userControl22");
+            this.userControl22.Name = "userControl22";
+            // 
             // userControl11
             // 
             resources.ApplyResources(this.userControl11, "userControl11");
             this.userControl11.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.userControl11.Name = "userControl11";
             this.userControl11.Load += new System.EventHandler(this.userControl11_Load);
-            // 
-            // userControl21
-            // 
-            resources.ApplyResources(this.userControl21, "userControl21");
-            this.userControl21.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.userControl21.Name = "userControl21";
-            this.userControl21.Load += new System.EventHandler(this.userControl21_Load);
             // 
             // userControl31
             // 
@@ -113,13 +122,20 @@ namespace WindowsFormsApp2
             this.userControl31.Name = "userControl31";
             this.userControl31.Load += new System.EventHandler(this.userControl31_Load);
             // 
+            // userControl12
+            // 
+            this.userControl12.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            resources.ApplyResources(this.userControl12, "userControl12");
+            this.userControl12.Name = "userControl12";
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.userControl22);
+            this.Controls.Add(this.userControl12);
             this.Controls.Add(this.userControl11);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.userControl21);
             this.Controls.Add(this.userControl31);
             this.Name = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -143,6 +159,9 @@ namespace WindowsFormsApp2
         private System.Windows.Forms.ToolTip homeToolTip;
         private UserControl3 userControl31;
         private System.Windows.Forms.Label versionlabel;
+        private System.Windows.Forms.Button close;
+        private UserControl2 userControl22;
+        private UserControl1 userControl12;
     }
 }
 

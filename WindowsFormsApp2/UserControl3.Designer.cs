@@ -198,7 +198,7 @@
             // appearance1
             // 
             this.appearance1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.appearance1.Location = new System.Drawing.Point(18, 73);
+            this.appearance1.Location = new System.Drawing.Point(-3, 25);
             this.appearance1.Name = "appearance1";
             this.appearance1.Size = new System.Drawing.Size(1287, 607);
             this.appearance1.TabIndex = 20;

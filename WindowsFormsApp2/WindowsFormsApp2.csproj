@@ -280,7 +280,7 @@
     <None Include="bin\Debug\align-right-solid.png" />
     <None Include="bin\Debug\align-left-solid.png" />
     <None Include="bin\Debug\align-center-solid.png" />
-    <Content Include="changelog.txt" />
+    <None Include="changelog.md" />
     <None Include="Resources\eye-regular.png" />
     <None Include="Resources\file-solid.png" />
     <None Include="Resources\file-regular.png" />
