@@ -1089,7 +1089,7 @@ namespace WindowsFormsApp2
 
         public bool isAWord(string s)
         {
-            NetSpell.SpellChecker.Dictionary.WordDictionary oDict = new NetSpell.SpellChecker.Dictionary.WordDictionary();
+            var oDict = new NetSpell.SpellChecker.Dictionary.WordDictionary();
 
             oDict.DictionaryFile = "en-US.dic";
             oDict.Initialize();
