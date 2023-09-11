@@ -35,6 +35,8 @@ using System.Windows.Documents;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 using static IronPython.Modules._ast;
 using RichTextBoxEx;
+using static Community.CsharpSqlite.Sqlite3;
+using IronPython.Runtime.Operations;
 
 namespace WindowsFormsApp2
 {
@@ -119,8 +121,8 @@ namespace WindowsFormsApp2
             }*/
 
             Cursor.Current = Cursors.WaitCursor;
-            var dtnp = DateTime.Now.ToString("yyyy-MM-dd hhmmss");
-            var dtn = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+            var dtnp = System.DateTime.Now.ToString("yyyy-MM-dd hhmmss");
+            var dtn = System.DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
 
             Form1 myParent = (Form1)this.Parent;
             var formPopup = new Form();
@@ -480,8 +482,8 @@ namespace WindowsFormsApp2
             var sortedDict = from entry in words orderby entry.Value descending select entry;
 
 
-            var dtnp = DateTime.Now.ToString("yyyy-MM-dd HHmmss");
-            var dtn = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            var dtnp = System.DateTime.Now.ToString("yyyy-MM-dd HHmmss");
+            var dtn = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             // PDF maker.
             // Reference: https://ironpdf.com/blog/using-ironpdf/csharp-create-pdf-tutorial/
             var pdf = new ChromePdfRenderer
@@ -1166,25 +1168,10 @@ namespace WindowsFormsApp2
         private const double readingwpm = 238, speakingwpm = 183;
         public int characters, words, sentences;
         public double avesentenceslen, avewordslen, readingt, speakingt;
-        ScriptEngine engine;
-        ICollection<string> searchPaths;
-        ScriptScope scope;
-        ScriptSource source;
-        CompiledCode compilation, result;
 
         public analyzer()
         {
-            this.engine = Python.CreateEngine();
 
-            this.searchPaths = this.engine.GetSearchPaths();
-            this.searchPaths.Add(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\..\.."));
-            this.engine.SetSearchPaths(this.searchPaths);
-
-            this.scope = this.engine.CreateScope();
-
-            this.source = this.engine.CreateScriptSourceFromFile(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\syallapy.py"));
-            this.compilation = this.source.Compile();
-            this.result = this.compilation.Execute(scope);
         }
 
         public void changeEssay(string essay)
@@ -1231,8 +1218,24 @@ namespace WindowsFormsApp2
         }
         public int numberOfSyllables()
         {
-            //MessageBox.Show(scope.GetVariable("count")("discombobulated").ToString());
-            return scope.GetVariable("count")(this.essay);
+            int totalcnt = 0;
+            string vowels = "aeiouy";
+            foreach(System.Text.RegularExpressions.Match match in splitToWords())
+            {
+                int cnt = 0;
+                var word = match.ToString().ToLower().strip();
+                if (vowels.Contains(word[0])) cnt++;
+                for(int i = 1; i < word.Length; i++)
+                {
+                    if (vowels.Contains(word[i]) && !vowels.Contains(word[i - 1])) cnt++;
+                }
+                if (word[word.Length - 1] == 'e') cnt--;
+                if (word.Length > 2 && word[word.Length - 2] == 'l' && word[word.Length - 1] == 'e' && !vowels.Contains(word[word.Length - 3])) cnt++;
+                //MessageBox.Show(word + ' ' + cnt.ToString());
+                totalcnt += Math.Max(1, cnt);
+            }
+            MessageBox.Show(totalcnt.ToString());
+            return totalcnt;
         }
 
         public bool isAbbr(int x)
@@ -1284,7 +1287,7 @@ namespace WindowsFormsApp2
 
         public MatchCollection splitToWords()
         {
-            string pattern = @"[-\w]+[\s\t\r\n]?";
+            string pattern = @"[-\w]+[\s\t\r\n]?('s)*";
             MatchCollection matches = Regex.Matches(this.essay, pattern);
             return matches; 
         }

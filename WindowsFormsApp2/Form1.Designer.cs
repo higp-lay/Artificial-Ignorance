@@ -41,11 +41,11 @@ namespace WindowsFormsApp2
             this.Analyze = new System.Windows.Forms.Button();
             this.Settings = new System.Windows.Forms.Button();
             this.Home = new System.Windows.Forms.Button();
-            this.userControl22 = new WindowsFormsApp2.UserControl2();
             this.homeToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.userControl11 = new WindowsFormsApp2.UserControl1();
             this.userControl31 = new WindowsFormsApp2.UserControl3();
             this.userControl12 = new WindowsFormsApp2.UserControl1();
+            this.userControl23 = new WindowsFormsApp2.UserControl2();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,12 +102,6 @@ namespace WindowsFormsApp2
             this.Home.UseVisualStyleBackColor = true;
             this.Home.Click += new System.EventHandler(this.Home_Click);
             // 
-            // userControl22
-            // 
-            this.userControl22.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            resources.ApplyResources(this.userControl22, "userControl22");
-            this.userControl22.Name = "userControl22";
-            // 
             // userControl11
             // 
             resources.ApplyResources(this.userControl11, "userControl11");
@@ -128,11 +122,17 @@ namespace WindowsFormsApp2
             resources.ApplyResources(this.userControl12, "userControl12");
             this.userControl12.Name = "userControl12";
             // 
+            // userControl23
+            // 
+            this.userControl23.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            resources.ApplyResources(this.userControl23, "userControl23");
+            this.userControl23.Name = "userControl23";
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.userControl22);
+            this.Controls.Add(this.userControl23);
             this.Controls.Add(this.userControl12);
             this.Controls.Add(this.userControl11);
             this.Controls.Add(this.panel1);
@@ -162,6 +162,7 @@ namespace WindowsFormsApp2
         private System.Windows.Forms.Button close;
         private UserControl2 userControl22;
         private UserControl1 userControl12;
+        private UserControl2 userControl23;
     }
 }
 

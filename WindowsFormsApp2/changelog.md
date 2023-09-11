@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Mispelled red lines now shown properly in PDF report
+- Words with "'s" not properly splitting 
 
 ## [0.7.0] - 2023-09-05
 

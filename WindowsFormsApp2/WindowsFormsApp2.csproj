@@ -290,7 +290,6 @@
     <None Include="Resources\increasefont2.png" />
     <None Include="Resources\increasefont3.png" />
     <None Include="Resources\fontdecrease.png" />
-    <Content Include="syallapy.py" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp2.Properties;
 using Xceed.Wpf.AvalonDock.Themes;
+using System.IO;
 
 namespace WindowsFormsApp2
 {
@@ -23,6 +24,7 @@ namespace WindowsFormsApp2
 
         private void analyzersettings_Load(object sender, EventArgs e)
         {
+            var path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\";
             comboBox1.DrawMode = DrawMode.OwnerDrawFixed;
             comboBox1.DrawItem += new DrawItemEventHandler(fontCombo_DrawItem);
             initThisWidth = this.Size.Width;
@@ -46,10 +48,10 @@ namespace WindowsFormsApp2
 
             if(Properties.Settings.Default.showFolderDialog)
             {
-                pictureBox1.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "square-checked-regular.png");
+                pictureBox1.Image = Image.FromFile(path + @"square-checked-regular.png");
             } else 
             {
-                pictureBox1.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "square-unchecked-regular.png");
+                pictureBox1.Image = Image.FromFile(path + @"square-unchecked-regular.png");
             }
 
 
@@ -206,14 +208,15 @@ namespace WindowsFormsApp2
                 showFileDialog.Enabled = true;
             }
             showFileDialog.Refresh();
+            var path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\";
 
             if (Properties.Settings.Default.showFolderDialog)
             {
-                pictureBox1.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\bin\Debug\square-checked-regular.png");
+                pictureBox1.Image = Image.FromFile(path + @"square-checked-regular.png");
             }
             else
             {
-                pictureBox1.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\bin\Debug\square-unchecked-regular.png");
+                pictureBox1.Image = Image.FromFile(path + @"square-unchecked-regular.png");
             }
         }
 
@@ -252,15 +255,16 @@ namespace WindowsFormsApp2
 
         private void showFileDialog_Click(object sender, EventArgs e)
         {
+            var path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\";
             Properties.Settings.Default.showFolderDialog = !Properties.Settings.Default.showFolderDialog;
             Properties.Settings.Default.Save();
             if (Properties.Settings.Default.showFolderDialog)
             {
-                pictureBox1.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\bin\Debug\square-checked-regular.png");
+                pictureBox1.Image = Image.FromFile(path + @"square-checked-regular.png");
             }
             else
             {
-                pictureBox1.Image = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + @"\..\..\bin\Debug\square-unchecked-regular.png");
+                pictureBox1.Image = Image.FromFile(path + @"square-unchecked-regular.png");
             }
             showFileDialog.Refresh();
         }

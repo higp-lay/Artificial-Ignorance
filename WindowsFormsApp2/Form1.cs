@@ -27,7 +27,7 @@ namespace WindowsFormsApp2
         }
         public UserControl UC2
         {
-            get { return userControl22; }
+            get { return userControl23; }
         }
         public UserControl UC3
         {
@@ -35,7 +35,7 @@ namespace WindowsFormsApp2
         }
         public RichTextBox rtb
         {
-            get { return userControl22.richTextBox1; }
+            get { return userControl23.richTextBox1; }
         }
         public int selectLength
         {
@@ -54,7 +54,7 @@ namespace WindowsFormsApp2
         }
 
         //userControl11 --> home
-        //userControl22 --> the analyzerS
+        //userControl23 --> the analyzerS
         private void Home_Click(object sender, EventArgs e)
         {
             // Changing the BackColor of "Home" Button
@@ -63,8 +63,9 @@ namespace WindowsFormsApp2
             Analyze.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
             // Changing the BackColor of "Settings" Button
             Settings.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
+            close.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
             userControl11.Show();
-            userControl22.Hide();
+            userControl23.Hide();
             userControl31.Hide();
             userControl11.BringToFront();
         }
@@ -74,10 +75,11 @@ namespace WindowsFormsApp2
             Analyze.BackColor = System.Drawing.ColorTranslator.FromHtml("#DDDDDD");
             Home.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
             Settings.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
-            userControl22.Show();
+            close.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
+            userControl23.Show();
             userControl11.Hide();
             userControl31.Hide();
-            userControl22.BringToFront();
+            userControl23.BringToFront();
         }
 
         private void Settings_Click(object sender, EventArgs e)
@@ -85,9 +87,10 @@ namespace WindowsFormsApp2
             Settings.BackColor = System.Drawing.ColorTranslator.FromHtml("#DDDDDD");
             Home.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
             Analyze.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
+            close.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
             userControl31.Show();
             userControl11.Hide();
-            userControl22.Hide();
+            userControl23.Hide();
             userControl31.BringToFront();
         }
 
@@ -109,7 +112,7 @@ namespace WindowsFormsApp2
         }
 
 
-        private void userControl22_Load(object sender, EventArgs e)
+        private void userControl23_Load(object sender, EventArgs e)
         {
         }
 
@@ -127,11 +130,11 @@ namespace WindowsFormsApp2
             //panel1.Size = new Size(formWidth/9, panel1.Height);
 
             userControl11.Location = new Point(200, 0);
-            userControl22.Location = new Point(200, 0);
+            userControl23.Location = new Point(200, 0);
             userControl31.Location = new Point(200, 0);
 
             userControl11.Size = new Size(this.Width - 200, panel1.Height);
-            userControl22.Size = new Size(this.Width - 200, panel1.Height);
+            userControl23.Size = new Size(this.Width - 200, panel1.Height);
             userControl31.Size = new Size(this.Width - 200, panel1.Height);
 
             Home.Location = new Point(panel1.Size.Width / 2 - Home.Size.Width / 2, 100);
@@ -155,7 +158,7 @@ namespace WindowsFormsApp2
         {
             var color = Properties.Appearance.Default.BackColor;
             userControl11.BackColor = System.Drawing.ColorTranslator.FromHtml($"#{color}");
-            userControl22.BackColor = System.Drawing.ColorTranslator.FromHtml($"#{color}");
+            userControl23.BackColor = System.Drawing.ColorTranslator.FromHtml($"#{color}");
             userControl31.BackColor = System.Drawing.ColorTranslator.FromHtml($"#{color}");
 
             var colorx = System.Drawing.ColorTranslator.FromHtml($"#{color}");
