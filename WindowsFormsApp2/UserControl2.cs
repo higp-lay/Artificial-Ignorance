@@ -19,24 +19,14 @@ using System.Net.Http;
 using System.Threading;
 using System.Transactions;
 using System.Windows.Controls;
-using IronPython;
 using NetSpell;
 
-using IronPython.Hosting;
-using Microsoft.Scripting;
-using Microsoft.Scripting.Hosting;
-using Microsoft.Scripting.Runtime;
 using System.Web.UI.WebControls;
-using static IronPython.Modules.PythonRegex;
 using NetSpell.SpellChecker.Dictionary;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using IronPython.Runtime.Types;
 using System.Windows.Documents;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
-using static IronPython.Modules._ast;
 using RichTextBoxEx;
-using static Community.CsharpSqlite.Sqlite3;
-using IronPython.Runtime.Operations;
 
 namespace WindowsFormsApp2
 {
@@ -1223,7 +1213,7 @@ namespace WindowsFormsApp2
             foreach(System.Text.RegularExpressions.Match match in splitToWords())
             {
                 int cnt = 0;
-                var word = match.ToString().ToLower().strip();
+                var word = match.ToString().ToLower().Trim();
                 if (vowels.Contains(word[0])) cnt++;
                 for(int i = 1; i < word.Length; i++)
                 {

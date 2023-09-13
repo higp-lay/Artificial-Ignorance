@@ -10,9 +10,6 @@ using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 
-using IronPython.Hosting;
-using Microsoft.Scripting;
-using Microsoft.Scripting.Hosting;
 
 namespace WindowsFormsApp2
 {
