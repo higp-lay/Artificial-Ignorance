@@ -685,18 +685,22 @@ namespace WindowsFormsApp2
                 return;
             }
             MessageBox.Show("Please save your file as .rtf format if you want to preserve your text styles.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            saveFileDialog1.Filter = "rtf files (*.rtf)|*.rtf|txt files (*.txt)|*.txt";
+            saveFileDialog1.Filter = "rtf files (*.rtf)|*.rtf|txt files (*.txt)|*.txt|word file (*.docx)|*.docx";
             saveFileDialog1.FilterIndex = 1;
             saveFileDialog1.InitialDirectory = Properties.Settings.Default.initialDirectory;
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                if (Path.GetExtension(saveFileDialog1.FileName).ToLower() != ".txt")
+                if (Path.GetExtension(saveFileDialog1.FileName).ToLower() == ".rtf")
                 {
                     richTextBox1.SaveFile(saveFileDialog1.FileName, RichTextBoxStreamType.RichText);
                     MessageBox.Show("Text has saved successfully as " + Path.GetFileName(saveFileDialog1.FileName), "Finished", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                } else
+                } else if (Path.GetExtension(saveFileDialog1.FileName).ToLower() == ".txt")
                 {
                     richTextBox1.SaveFile(saveFileDialog1.FileName, RichTextBoxStreamType.PlainText);
+                    MessageBox.Show("Text has saved successfully as " + Path.GetFileName(saveFileDialog1.FileName), "Finished", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                } else if(Path.GetExtension(saveFileDialog1.FileName).ToLower() == ".docx")
+                {
+                    richTextBox1.SaveFile(saveFileDialog1.FileName, RichTextBoxStreamType.RichText);
                     MessageBox.Show("Text has saved successfully as " + Path.GetFileName(saveFileDialog1.FileName), "Finished", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 

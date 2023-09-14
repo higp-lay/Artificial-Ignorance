@@ -87,8 +87,11 @@ namespace WindowsFormsApp2
             //MessageBox.Show(essaytmp);
             //MessageBox.Show(findfindtbtext);
 
-            r = new Regex(findfindtbtext);
-            a = r.Matches(essaytmp).Cast<Match>().Select(m => m.Index).ToArray();
+            if(findIndex == -1)
+            {
+                r = new Regex(findfindtbtext);
+                a = r.Matches(essaytmp).Cast<Match>().Select(m => m.Index).ToArray();
+            }
             findIndex++;
             if(a.Length == 0)
             {
@@ -145,8 +148,11 @@ namespace WindowsFormsApp2
             //MessageBox.Show(essaytmp);
             //MessageBox.Show(findfindtbtext);
 
-            r = new Regex(replacefindtbtext);
-            a = r.Matches(essaytmp).Cast<Match>().Select(m => m.Index).ToArray();
+            if (findIndex == -1)
+            {
+                r = new Regex(replacefindtbtext);
+                a = r.Matches(essaytmp).Cast<Match>().Select(m => m.Index).ToArray();
+            }
             findIndex++;
             if (a.Length == 0)
             {
@@ -232,8 +238,11 @@ namespace WindowsFormsApp2
             //MessageBox.Show(essaytmp);
             //MessageBox.Show(findfindtbtext);
 
-            r = new Regex(replacefindtbtext);
-            a = r.Matches(essaytmp).Cast<Match>().Select(m => m.Index).ToArray();
+            if(findIndex == -1)
+            {
+                r = new Regex(replacefindtbtext);
+                a = r.Matches(essaytmp).Cast<Match>().Select(m => m.Index).ToArray();
+            }
 
             if (a.Length == 0)
             {
