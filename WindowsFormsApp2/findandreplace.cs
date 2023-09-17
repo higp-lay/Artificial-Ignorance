@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Web.ModelBinding;
 using Microsoft.Win32;
+using System.Web.WebSockets;
 
 namespace WindowsFormsApp2
 {
@@ -58,7 +59,18 @@ namespace WindowsFormsApp2
             findcancel.Enabled = false;
             findfindnext.Enabled = false;
             findIndex = -1;
-                form.selectLength = form.selectStart = -1;
+            form.selectLength = form.selectStart = -1;
+            label1.Font = label2.Font = label3.Font = new Font(Properties.Appearance.Default.FontFamily, 12, FontStyle.Regular);
+            replaceone.Font = replaceall.Font = findfindnext.Font = findcancel.Font = replacecancel.Font = replacefindnext.Font = new Font(Properties.Appearance.Default.FontFamily, 9, FontStyle.Regular);
+            checkBox1.Font = checkBox2.Font = new Font(Properties.Appearance.Default.FontFamily, 12, FontStyle.Regular);
+            replacefindtb.Font = replacereplacetb.Font = findfindtb.Font = new Font(Properties.Appearance.Default.FontFamily, 9, FontStyle.Regular);
+            tabControl1.Font = new Font(Properties.Appearance.Default.FontFamily, 9, FontStyle.Regular);
+            var color = System.Drawing.ColorTranslator.FromHtml($"#{Properties.Appearance.Default.BackColor}");
+            for (int i = 0; i < this.tabControl1.TabCount; ++i)
+            {
+                tabControl1.SelectedIndex = i;
+                tabControl1.SelectedTab.BackColor = color;
+            }
             form.rtb.TextChanged += (s, a) =>
             {
                 if(essay != form.rtb.Text) findIndex = -1;

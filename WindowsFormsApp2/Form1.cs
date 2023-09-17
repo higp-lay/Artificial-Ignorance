@@ -15,7 +15,7 @@ namespace WindowsFormsApp2
 {
     public partial class Form1 : Form
     {
-        const string version = "0.8.0";
+        const string version = "0.8.1";
         private int selen = -1, sestart = -1;
 
         public UserControl UC1
@@ -175,6 +175,7 @@ namespace WindowsFormsApp2
             Analyze.Font = new Font(Properties.Appearance.Default.FontFamily, 15, FontStyle.Bold);
             Settings.Font = new Font(Properties.Appearance.Default.FontFamily, 15, FontStyle.Bold);
             versionlabel.Font = new Font(Properties.Appearance.Default.FontFamily, 10, FontStyle.Bold);
+            //userControl23.Font = new Font(Properties.Appearance.Default.FontFamily, userControl23.Font.Size, FontStyle.Regular);
         }
 
     }
